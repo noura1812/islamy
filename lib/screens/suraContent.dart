@@ -12,7 +12,7 @@ class SuraContent extends StatefulWidget {
 
 class _SuraContentState extends State<SuraContent> {
   List<String> lins = [];
-
+  String besmallah = 'بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ';
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
@@ -36,6 +36,8 @@ class _SuraContentState extends State<SuraContent> {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
             decoration: BoxDecoration(
+                border: Border.all(
+                    color: Theme.of(context).primaryColor.withOpacity(.5)),
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white.withOpacity(.4)),
             child: Column(children: [
@@ -48,24 +50,51 @@ class _SuraContentState extends State<SuraContent> {
               ),
               Divider(
                 thickness: 1,
+                indent: 40,
+                endIndent: 40,
                 color: Theme.of(context).primaryColor,
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Text(
-                        '${lins[index]}(${index + 1})',
-                        style: GoogleFonts.elMessiri(
-                            fontSize: 20, fontWeight: FontWeight.normal),
-                      ),
-                    );
-                  },
-                  itemCount: lins.length,
+                child: ListView(
+                  children: [
+                    args.index != 0
+                        ? Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(bottom: 20),
+                            child: Text(
+                              besmallah,
+                              style: GoogleFonts.elMessiri(
+                                  color: const Color(0xff242424),
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.normal),
+                            ),
+                          )
+                        : Container(),
+                    RichText(
+                        textAlign: lins.length < 20
+                            ? TextAlign.center
+                            : TextAlign.justify,
+                        textDirection: TextDirection.rtl,
+                        text: TextSpan(children: [
+                          for (var i = 0; i < lins.length; i++) ...{
+                            TextSpan(
+                                text: lins[i],
+                                style: GoogleFonts.elMessiri(
+                                    color: Color(0xff242424),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal)),
+                            TextSpan(
+                                text: ' (${i + 1}) ',
+                                style: GoogleFonts.elMessiri(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Theme.of(context).primaryColor))
+                          }
+                        ]))
+                  ],
                 ),
               )
             ]),
