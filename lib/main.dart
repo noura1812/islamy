@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/mytheme.dart';
+import 'package:islamy/screens/hadethContent.dart';
 import 'package:islamy/screens/myhomepage.dart';
 import 'package:islamy/screens/suraContent.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       initialRoute: MyHomePage.routname,
       routes: {
         MyHomePage.routname: (context) => MyHomePage(),
-        SuraContent.routname: (context) => SuraContent()
+        SuraContent.routname: (context) => SuraContent(),
+        Hadethcontent.routname: (context) => Hadethcontent()
       },
       home: MyHomePage(),
     );
