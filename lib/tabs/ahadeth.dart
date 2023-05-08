@@ -24,7 +24,7 @@ class _AhadethState extends State<Ahadeth> {
       Divider(
         height: 2,
         thickness: 2,
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
       Center(
         child: Text(
@@ -36,11 +36,11 @@ class _AhadethState extends State<Ahadeth> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.only(bottom: 5),
+        padding: const EdgeInsets.only(bottom: 10),
         child: Divider(
           height: 2,
           thickness: 2,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
       Expanded(
@@ -64,12 +64,15 @@ class _AhadethState extends State<Ahadeth> {
               );
             },
             separatorBuilder: (context, index) {
-              return Divider(
-                indent: 40,
-                endIndent: 40,
-                height: 2,
-                thickness: 2,
-                color: Theme.of(context).primaryColor,
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                child: Divider(
+                  indent: 40,
+                  endIndent: 40,
+                  height: 2,
+                  thickness: 2,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               );
             },
             itemCount: hadethModels.length),

@@ -144,7 +144,7 @@ class _QuranTabState extends State<QuranTab> {
             Divider(
               height: 2,
               thickness: 2,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
             Row(
               children: [
@@ -153,43 +153,27 @@ class _QuranTabState extends State<QuranTab> {
                   alignment: Alignment.center,
                   child: Text(
                     AppLocalizations.of(context)!.ayat_count,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontSize: 25, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  child: VerticalDivider(
-                    width: 0,
-                    thickness: 2,
-                    color: Theme.of(context).primaryColor,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
                 Container(
                   width: width / 2,
                   alignment: Alignment.center,
-                  child: Text(
-                    AppLocalizations.of(context)!.sura_names,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontSize: 25, fontWeight: FontWeight.w600),
-                  ),
+                  child: Text(AppLocalizations.of(context)!.sura_names,
+                      style: Theme.of(context).textTheme.bodyMedium),
                 )
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 2),
+              padding: const EdgeInsets.only(bottom: 7),
               child: Divider(
                 height: 2,
                 thickness: 2,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
                 itemBuilder: (context, index) {
                   return Container(
                       padding: const EdgeInsets.symmetric(vertical: 4),
@@ -205,11 +189,19 @@ class _QuranTabState extends State<QuranTab> {
                                       width: 15,
                                       height: 15,
                                       child: CircularProgressIndicator(
-                                        color: Theme.of(context).primaryColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .surface,
                                         strokeWidth: 2,
                                       ),
                                     )
-                                  : Text(nums[index].toString())),
+                                  : Text(nums[index].toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium!
+                                          .copyWith(
+                                            fontSize: 20,
+                                          ))),
                           Container(
                             alignment: Alignment.center,
                             width: width / 2,
@@ -232,6 +224,18 @@ class _QuranTabState extends State<QuranTab> {
                       ));
                 },
                 itemCount: names.length,
+                separatorBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    child: Divider(
+                      thickness: 1,
+                      height: 1,
+                      endIndent: 50,
+                      indent: 50,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  );
+                },
               ),
             ),
           ],
@@ -243,7 +247,7 @@ class _QuranTabState extends State<QuranTab> {
             indent: height * .3,
             width: 0,
             thickness: 2,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ],

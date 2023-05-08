@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/Provider.dart';
 import 'package:islamy/tabs/qurantab.dart';
 import 'package:islamy/tabs/radio.dart';
 import 'package:islamy/tabs/ahadeth.dart';
 import 'package:islamy/tabs/settingstab.dart';
 import 'package:islamy/tabs/tasbeeh.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   static const String routname = 'myhome';
@@ -26,12 +28,16 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<myProvider>(context);
+
     return Stack(
       children: [
         SizedBox(
             width: double.infinity,
             child: Image.asset(
-              'assets/images/bg3.png',
+              Theme.of(context).colorScheme.brightness == Brightness.light
+                  ? 'assets/images/bg3.png'
+                  : 'assets/images/dark bg.png',
               fit: BoxFit.fill,
             )),
         Scaffold(
