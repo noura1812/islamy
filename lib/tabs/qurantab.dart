@@ -146,110 +146,92 @@ class _QuranTabState extends State<QuranTab> {
               thickness: 2,
               color: Theme.of(context).primaryColor,
             ),
+            Row(
+              children: [
+                Container(
+                  width: width / 2,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'عدد الآيات',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontSize: 25, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  child: VerticalDivider(
+                    width: 0,
+                    thickness: 2,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                Container(
+                  width: width / 2,
+                  alignment: Alignment.center,
+                  child: Text(
+                    'اسم السورة',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontSize: 25, fontWeight: FontWeight.w600),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 2),
+              child: Divider(
+                height: 2,
+                thickness: 2,
+                color: Theme.of(context).primaryColor,
+              ),
+            ),
             Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: width / 2,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'عدد الآيات',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  fontSize: 25, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 50,
-                        child: VerticalDivider(
-                          width: 0,
-                          thickness: 2,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                      Container(
-                        width: width / 2,
-                        alignment: Alignment.center,
-                        child: Text(
-                          'اسم السورة',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  fontSize: 25, fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 2),
-                    child: Divider(
-                      height: 2,
-                      thickness: 2,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                  Flexible(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 4),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-                                          alignment: Alignment.center,
-                                          width: width / 2,
-                                          child: nums.length!=names.length
-                                              ? SizedBox(
-                                                  width: 15,
-                                                  height: 15,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    color: Theme.of(context)
-                                                        .primaryColor,
-                                                    strokeWidth: 2,
-                                                  ),
-                                                )
-                                              : Text(nums[index].toString())),
-                                      Container(
-                                        alignment: Alignment.center,
-                                        width: width / 2,
-                                        child: InkWell(
-                                            onTap: () {
-                                              Navigator.pushNamed(
-                                                  context, SuraContent.routname,
-                                                  arguments: SuraModel(
-                                                      names[index], index));
-                                            },
-                                            child: Text(names[index],
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleMedium!
-                                                    .copyWith(
-                                                      fontSize: 20,
-                                                    ))),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Container(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                              alignment: Alignment.center,
+                              width: width / 2,
+                              child: nums.length != names.length
+                                  ? SizedBox(
+                                      width: 15,
+                                      height: 15,
+                                      child: CircularProgressIndicator(
+                                        color: Theme.of(context).primaryColor,
+                                        strokeWidth: 2,
                                       ),
-                                    ],
-                                  ));
-                            },
-                            itemCount: names.length,
+                                    )
+                                  : Text(nums[index].toString())),
+                          Container(
+                            alignment: Alignment.center,
+                            width: width / 2,
+                            child: InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, SuraContent.routname,
+                                      arguments:
+                                          SuraModel(names[index], index));
+                                },
+                                child: Text(names[index],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          fontSize: 20,
+                                        ))),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                        ],
+                      ));
+                },
+                itemCount: names.length,
               ),
             ),
           ],

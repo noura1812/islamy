@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:math' as math;
 
 class Tasbeeh extends StatefulWidget {
   @override
@@ -15,18 +16,54 @@ class _TasbeehState extends State<Tasbeeh> {
   ];
 
   int index = 0;
-
+  double _angle = 0;
   int count = 0;
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Center(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 30,
           ),
-          Image.asset('assets/images/sebhaphoto.png'),
+          SizedBox(
+            width: double.infinity,
+            height: height * .4,
+            child: Stack(
+              children: [
+                Container(
+                    margin: const EdgeInsets.only(left: 50),
+                    alignment: Alignment.topCenter,
+                    child: Image.asset('assets/images/head of seb7a.png')),
+                Container(
+                  margin: const EdgeInsets.only(top: 80),
+                  alignment: Alignment.topCenter,
+                  child: InkWell(
+                      onTap: () {
+                        _angle += math.pi / 45;
+                        if (count == 30) {
+                          count = 0;
+                          if (index == 3) {
+                            index = 0;
+                          } else {
+                            index++;
+                          }
+                        } else {
+                          count++;
+                        }
+                        setState(() {});
+                      },
+                      child: Transform.rotate(
+                          angle: _angle,
+                          child:
+                              Image.asset('assets/images/body of seb7a.png'))),
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
@@ -48,34 +85,16 @@ class _TasbeehState extends State<Tasbeeh> {
                     fontWeight: FontWeight.bold,
                     color: Colors.black)),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  backgroundColor: Theme.of(context).primaryColor),
-              onPressed: () {
-                if (count == 30) {
-                  count = 0;
-                  if (index == 3) {
-                    index = 0;
-                  } else {
-                    index++;
-                  }
-                } else {
-                  count++;
-                }
-                setState(() {});
-              },
-              child: Text(
-                doaa[index],
-                style: GoogleFonts.elMessiri(
-                    fontSize: 25, fontWeight: FontWeight.w600),
-              ),
+          Container(
+            margin: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.0),
+                color: Theme.of(context).primaryColor),
+            child: Text(
+              doaa[index],
+              style: GoogleFonts.elMessiri(
+                  fontSize: 25, fontWeight: FontWeight.w600),
             ),
           )
         ],
