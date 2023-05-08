@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/tabs/qurantab.dart';
 import 'package:islamy/tabs/radio.dart';
 import 'package:islamy/tabs/ahadeth.dart';
+import 'package:islamy/tabs/settingstab.dart';
 import 'package:islamy/tabs/tasbeeh.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -16,7 +17,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int index = 3;
-  List<Widget> tabs = [RadioTab(), Tasbeeh(), Ahadeth(), QuranTab()];
+  List<Widget> tabs = [
+    RadioTab(),
+    Tasbeeh(),
+    Ahadeth(),
+    QuranTab(),
+    Settings()
+  ];
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -61,6 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: const ImageIcon(
                         AssetImage('assets/images/moshaf_blue.png')),
                     label: AppLocalizations.of(context)!.quran,
+                    backgroundColor: Theme.of(context).primaryColor),
+                BottomNavigationBarItem(
+                    icon: const Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings,
                     backgroundColor: Theme.of(context).primaryColor),
               ]),
         ),

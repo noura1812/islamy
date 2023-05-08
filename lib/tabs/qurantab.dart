@@ -152,7 +152,7 @@ class _QuranTabState extends State<QuranTab> {
                   width: width / 2,
                   alignment: Alignment.center,
                   child: Text(
-                    'عدد الآيات',
+                    AppLocalizations.of(context)!.ayat_count,
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
@@ -171,7 +171,7 @@ class _QuranTabState extends State<QuranTab> {
                   width: width / 2,
                   alignment: Alignment.center,
                   child: Text(
-                    'اسم السورة',
+                    AppLocalizations.of(context)!.sura_names,
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
