@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/mytheme.dart';
+import 'package:islamy/screens/hadethContent.dart';
 import 'package:islamy/screens/myhomepage.dart';
 import 'package:islamy/screens/suraContent.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      locale: Locale('en'),
       supportedLocales: const [
         Locale('en'), // English
         Locale('ar'),
@@ -31,8 +33,9 @@ class MyApp extends StatelessWidget {
       theme: MyThemeData.lightTheme,
       initialRoute: MyHomePage.routname,
       routes: {
-        MyHomePage.routname: (context) => const MyHomePage(),
-        SuraContent.routname: (context) => SuraContent()
+        MyHomePage.routname: (context) => MyHomePage(),
+        SuraContent.routname: (context) => SuraContent(),
+        Hadethcontent.routname: (context) => Hadethcontent()
       },
       home: const MyHomePage(),
     );
