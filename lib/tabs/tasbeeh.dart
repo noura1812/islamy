@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Tasbeeh extends StatefulWidget {
   @override
@@ -67,7 +68,7 @@ class _TasbeehState extends State<Tasbeeh> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              'عدد التسبيحات',
+              AppLocalizations.of(context)!.tasbeeh_count,
               style: GoogleFonts.elMessiri(
                   fontSize: 25, fontWeight: FontWeight.w600),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamy/models/hadethModel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Hadethcontent extends StatelessWidget {
   static const String routname = 'hadethcontent';
@@ -21,7 +22,7 @@ class Hadethcontent extends StatelessWidget {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.appTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),

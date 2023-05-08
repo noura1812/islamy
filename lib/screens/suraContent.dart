@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamy/models/suraModel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuraContent extends StatefulWidget {
   static const String routname = 'suracontant';
@@ -28,7 +29,7 @@ class _SuraContentState extends State<SuraContent> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.appTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
