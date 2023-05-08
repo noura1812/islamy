@@ -3,6 +3,7 @@ import 'package:islamy/tabs/qurantab.dart';
 import 'package:islamy/tabs/radio.dart';
 import 'package:islamy/tabs/ahadeth.dart';
 import 'package:islamy/tabs/tasbeeh.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
   static const String routname = 'myhome';
@@ -29,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              AppLocalizations.of(context)!.appTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
@@ -44,22 +45,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 BottomNavigationBarItem(
                     icon:
                         const ImageIcon(AssetImage('assets/images/radio.png')),
-                    label: 'الراديو',
+                    label: AppLocalizations.of(context)!.radio,
                     backgroundColor: Theme.of(context).primaryColor),
                 BottomNavigationBarItem(
                     icon:
                         const ImageIcon(AssetImage('assets/images/sebha.png')),
-                    label: 'التسبيح',
+                    label: AppLocalizations.of(context)!.sebha,
                     backgroundColor: Theme.of(context).primaryColor),
                 BottomNavigationBarItem(
                     icon: const ImageIcon(AssetImage(
                         'assets/images/quran-quran-svgrepo-com.png')),
-                    label: 'الاحاديث',
+                    label: AppLocalizations.of(context)!.ahadeth,
                     backgroundColor: Theme.of(context).primaryColor),
                 BottomNavigationBarItem(
                     icon: const ImageIcon(
                         AssetImage('assets/images/moshaf_blue.png')),
-                    label: 'القران',
+                    label: AppLocalizations.of(context)!.quran,
                     backgroundColor: Theme.of(context).primaryColor),
               ]),
         ),

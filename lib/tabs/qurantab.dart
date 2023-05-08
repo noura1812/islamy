@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/models/suraModel.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/screens/suraContent.dart';
 
 class QuranTab extends StatefulWidget {
@@ -155,7 +155,7 @@ class _QuranTabState extends State<QuranTab> {
                         width: width / 2,
                         alignment: Alignment.center,
                         child: Text(
-                          'عدد الآيات',
+                          AppLocalizations.of(context)!.ayat_count,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -175,7 +175,7 @@ class _QuranTabState extends State<QuranTab> {
                         width: width / 2,
                         alignment: Alignment.center,
                         child: Text(
-                          'اسم السورة',
+                          AppLocalizations.of(context)!.sura_names,
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -210,7 +210,7 @@ class _QuranTabState extends State<QuranTab> {
                                       Container(
                                           alignment: Alignment.center,
                                           width: width / 2,
-                                          child: nums.length!=names.length
+                                          child: nums.length != names.length
                                               ? SizedBox(
                                                   width: 15,
                                                   height: 15,
