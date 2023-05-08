@@ -16,13 +16,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int index = 3;
+  int index = 4;
   List<Widget> tabs = [
+    Settings(),
     RadioTab(),
     Tasbeeh(),
     Ahadeth(),
     QuranTab(),
-    Settings()
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,6 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
               currentIndex: index,
               items: [
                 BottomNavigationBarItem(
+                    icon: const Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings,
+                    backgroundColor: Theme.of(context).primaryColor),
+                BottomNavigationBarItem(
                     icon:
                         const ImageIcon(AssetImage('assets/images/radio.png')),
                     label: AppLocalizations.of(context)!.radio,
@@ -68,10 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: const ImageIcon(
                         AssetImage('assets/images/moshaf_blue.png')),
                     label: AppLocalizations.of(context)!.quran,
-                    backgroundColor: Theme.of(context).primaryColor),
-                BottomNavigationBarItem(
-                    icon: const Icon(Icons.settings),
-                    label: AppLocalizations.of(context)!.settings,
                     backgroundColor: Theme.of(context).primaryColor),
               ]),
         ),

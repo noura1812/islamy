@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/langProvider.dart';
 import 'package:islamy/mytheme.dart';
 import 'package:islamy/screens/hadethContent.dart';
 import 'package:islamy/screens/myhomepage.dart';
 import 'package:islamy/screens/suraContent.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (BuildContext context) => LangProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<LangProvider>(context);
     return MaterialApp(
       localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      locale: Locale('en'),
+      locale: Locale(provider.Language),
       supportedLocales: const [
         Locale('en'), // English
         Locale('ar'),

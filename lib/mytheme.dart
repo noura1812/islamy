@@ -25,6 +25,14 @@ class MyThemeData {
           titleMedium: GoogleFonts.elMessiri(
               color: const Color(0xff242424),
               fontSize: 30,
+              fontWeight: FontWeight.bold),
+          bodyLarge: GoogleFonts.elMessiri(
+              color: const Color(0xff242424),
+              fontSize: 28,
+              fontWeight: FontWeight.bold),
+          bodyMedium: GoogleFonts.elMessiri(
+              color: const Color(0xff242424),
+              fontSize: 25,
               fontWeight: FontWeight.bold)),
       appBarTheme: const AppBarTheme(
         iconTheme: IconThemeData(
