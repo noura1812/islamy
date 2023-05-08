@@ -16,7 +16,9 @@ class Hadethcontent extends StatelessWidget {
         SizedBox(
             width: double.infinity,
             child: Image.asset(
-              'assets/images/bg3.png',
+              Theme.of(context).colorScheme.brightness == Brightness.light
+                  ? 'assets/images/bg3.png'
+                  : 'assets/images/dark bg.png',
               fit: BoxFit.fill,
             )),
         Scaffold(
@@ -46,7 +48,7 @@ class Hadethcontent extends StatelessWidget {
                 thickness: 1,
                 indent: 40,
                 endIndent: 40,
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               const SizedBox(
                 height: 20,

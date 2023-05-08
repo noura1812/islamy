@@ -38,7 +38,11 @@ class _TasbeehState extends State<Tasbeeh> {
                 Container(
                     margin: const EdgeInsets.only(left: 50),
                     alignment: Alignment.topCenter,
-                    child: Image.asset('assets/images/head of seb7a.png')),
+                    child: Image.asset(
+                        Theme.of(context).colorScheme.brightness ==
+                                Brightness.light
+                            ? 'assets/images/head of seb7a.png'
+                            : 'assets/images/dark head of seb7a.png')),
                 Container(
                   margin: const EdgeInsets.only(top: 80),
                   alignment: Alignment.topCenter,
@@ -59,8 +63,11 @@ class _TasbeehState extends State<Tasbeeh> {
                       },
                       child: Transform.rotate(
                           angle: _angle,
-                          child:
-                              Image.asset('assets/images/body of seb7a.png'))),
+                          child: Image.asset(
+                              Theme.of(context).colorScheme.brightness ==
+                                      Brightness.light
+                                  ? 'assets/images/body of seb7a.png'
+                                  : 'assets/images/dark body of seb7a.png'))),
                 ),
               ],
             ),
@@ -81,21 +88,23 @@ class _TasbeehState extends State<Tasbeeh> {
                 borderRadius: BorderRadius.circular(30),
                 color: Theme.of(context).primaryColor.withOpacity(.55)),
             child: Text(count.toString(),
-                style: GoogleFonts.elMessiri(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black)),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold)),
           ),
           Container(
             margin: const EdgeInsets.all(20.0),
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
-                color: Theme.of(context).primaryColor),
+                color: Theme.of(context).colorScheme.onSurface),
             child: Text(
               doaa[index],
-              style: GoogleFonts.elMessiri(
-                  fontSize: 25, fontWeight: FontWeight.w600),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(color: Colors.black),
             ),
           )
         ],

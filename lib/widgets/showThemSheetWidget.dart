@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islamy/Provider.dart';
 import 'package:provider/provider.dart';
 
-class ShowLanguageSheet extends StatelessWidget {
-  const ShowLanguageSheet({super.key});
+class ShowThemeSheet extends StatelessWidget {
+  const ShowThemeSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +16,27 @@ class ShowLanguageSheet extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            methods.chaneLanguage('en');
+            methods.changeTeme('dark');
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
                 Text(
-                  'English',
+                  'Darth mood',
                   style: GoogleFonts.elMessiri(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: provider.Language == 'en'
-                        ? Theme.of(context).primaryColor
-                        : Color(0xff242424),
+                    color: provider.Theme == 'dark'
+                        ? Theme.of(context).colorScheme.onSurface
+                        : Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 Spacer(),
-                provider.Language == 'en'
+                provider.Theme == 'dark'
                     ? Icon(
                         Icons.done,
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                       )
                     : Container()
               ],
@@ -50,27 +50,27 @@ class ShowLanguageSheet extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            methods.chaneLanguage('ar');
+            methods.changeTeme('light');
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               children: [
                 Text(
-                  'عربي',
+                  'Light mood',
                   style: GoogleFonts.elMessiri(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: provider.Language == 'ar'
-                        ? Theme.of(context).primaryColor
-                        : Color(0xff242424),
+                    color: provider.Theme == 'light'
+                        ? Theme.of(context).colorScheme.onSurface
+                        : Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 Spacer(),
-                provider.Language == 'ar'
+                provider.Theme == 'light'
                     ? Icon(
                         Icons.done,
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                       )
                     : Container()
               ],

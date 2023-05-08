@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islamy/widgets/showLanguagesheetWidget.dart';
+import 'package:islamy/widgets/showThemSheetWidget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../langProvider.dart';
+import '../Provider.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -26,7 +27,8 @@ class Settings extends StatelessWidget {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: Theme.of(context).primaryColor),
+              border:
+                  Border.all(color: Theme.of(context).colorScheme.onSurface),
             ),
             child: InkWell(
               onTap: () {
@@ -36,7 +38,7 @@ class Settings extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    Provider.of<LangProvider>(context).Language == 'en'
+                    Provider.of<myProvider>(context).Language == 'en'
                         ? 'English'
                         : 'عربي',
                     style: GoogleFonts.elMessiri(
@@ -44,7 +46,7 @@ class Settings extends StatelessWidget {
                   ),
                   Icon(
                     Icons.arrow_drop_down,
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.onSurface,
                   )
                 ],
               ),
@@ -63,21 +65,29 @@ class Settings extends StatelessWidget {
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: Theme.of(context).primaryColor),
+              border:
+                  Border.all(color: Theme.of(context).colorScheme.onSurface),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Light mood',
-                  style: GoogleFonts.elMessiri(
-                      fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                Icon(
-                  Icons.arrow_drop_down,
-                  color: Theme.of(context).primaryColor,
-                )
-              ],
+            child: InkWell(
+              onTap: () {
+                showThemeSheet(context);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    Theme.of(context).colorScheme.brightness == Brightness.light
+                        ? 'Light mood'
+                        : 'Dark mood',
+                    style: GoogleFonts.elMessiri(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  Icon(
+                    Icons.arrow_drop_down,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -90,6 +100,15 @@ class Settings extends StatelessWidget {
       context: context,
       builder: (context) {
         return ShowLanguageSheet();
+      },
+    );
+  }
+
+  void showThemeSheet(context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ShowThemeSheet();
       },
     );
   }
