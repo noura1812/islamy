@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/Provider.dart';
+import 'package:islamy/provider/Provider.dart';
 import 'package:islamy/tabs/qurantab.dart';
 import 'package:islamy/tabs/radio.dart';
 import 'package:islamy/tabs/ahadeth.dart';
@@ -28,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<myProvider>(context);
+    var provider = Provider.of<MyProvider>(context);
 
     return Stack(
       children: [

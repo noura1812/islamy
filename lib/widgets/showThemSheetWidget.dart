@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islamy/Provider.dart';
+import 'package:islamy/provider/Provider.dart';
 import 'package:provider/provider.dart';
 
 class ShowThemeSheet extends StatelessWidget {
@@ -8,15 +8,15 @@ class ShowThemeSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var methods = Provider.of<myProvider>(context, listen: false);
-    var provider = Provider.of<myProvider>(context);
+    var methods = Provider.of<MyProvider>(context, listen: false);
+    var provider = Provider.of<MyProvider>(context);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         InkWell(
           onTap: () {
-            methods.changeTeme('dark');
+            methods.changeTheme(ThemeMode.dark);
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -27,13 +27,13 @@ class ShowThemeSheet extends StatelessWidget {
                   style: GoogleFonts.elMessiri(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: provider.Theme == 'dark'
+                    color: provider.theme == ThemeMode.dark
                         ? Theme.of(context).colorScheme.onSurface
                         : Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 Spacer(),
-                provider.Theme == 'dark'
+                provider.theme == ThemeMode.dark
                     ? Icon(
                         Icons.done,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -50,7 +50,7 @@ class ShowThemeSheet extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            methods.changeTeme('light');
+            methods.changeTheme(ThemeMode.light);
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -61,13 +61,13 @@ class ShowThemeSheet extends StatelessWidget {
                   style: GoogleFonts.elMessiri(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: provider.Theme == 'light'
+                    color: provider.theme == ThemeMode.light
                         ? Theme.of(context).colorScheme.onSurface
                         : Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
                 Spacer(),
-                provider.Theme == 'light'
+                provider.theme == ThemeMode.light
                     ? Icon(
                         Icons.done,
                         color: Theme.of(context).colorScheme.onSurface,

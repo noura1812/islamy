@@ -5,7 +5,7 @@ import 'package:islamy/widgets/showThemSheetWidget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../Provider.dart';
+import '../provider/Provider.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -38,7 +38,7 @@ class Settings extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    Provider.of<myProvider>(context).Language == 'en'
+                    Provider.of<MyProvider>(context).language == 'en'
                         ? 'English'
                         : 'عربي',
                     style: GoogleFonts.elMessiri(
