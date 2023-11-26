@@ -25,3 +25,5 @@ The app supports multiple languages with localization. It provides translations 
 ## User Preferences
 
 The app uses SharedPreferences to store and manage user preferences, such as preferred language and theme.
+
+# screenshot & APK : https://drive.google.com/drive/folders/1pbAAy6gOMpcpQECsu295y8BdDhnv4zLJ
